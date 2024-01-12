@@ -1,8 +1,11 @@
 const express = require('express');
 const app = express();
-app.get('/', (req, res) => {
-    res.send("hello");
-})
+const routes = require('./router')
+//     app.get('/', (req, res) => {
+//         res.send("hello");
+//     })
+
+app.use('/pages', routes)
 const port = 5000;
 app.listen(port, () => {
     try {
