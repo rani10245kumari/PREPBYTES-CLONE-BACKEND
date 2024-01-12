@@ -1,11 +1,22 @@
 const express = require('express');
 const app = express();
 const routes = require('./router')
-//     app.get('/', (req, res) => {
-//         res.send("hello");
-//     })
+const mockdata = require('./dataModel/data')
+const cors = require('cors')
+
+
+app.use(express.json())
+app.use(cors({
+    origin: "*"
+}))
+app.get("/", (req, res) => {
+
+    res.send(mockdata)
+})
 
 app.use('/pages', routes)
+
+
 const port = 5000;
 app.listen(port, () => {
     try {
