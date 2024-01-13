@@ -3,6 +3,7 @@ const app = express();
 const routes = require('./router')
 const mockdata = require('./dataModel/data')
 const cors = require('cors')
+const videoData = require('./dataModel/videodata')
 
 
 app.use(express.json())
@@ -12,6 +13,9 @@ app.use(cors({
 app.get("/", (req, res) => {
 
     res.send(mockdata)
+})
+app.get("/", (req, res) => {
+    res.send(videoData)
 })
 
 app.use('/pages', routes)
