@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
 
     res.send(mockdata)
 })
-app.get("/", (req, res) => {
+app.get("/video", (req, res) => {
     res.send(videoData)
 })
 
