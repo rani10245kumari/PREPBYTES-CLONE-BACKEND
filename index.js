@@ -6,6 +6,7 @@ const cors = require('cors')
 const videoData = require('./dataModel/videodata')
 const { videoTutorial, datavideo } = require('./dataModel/MODEL/Schema')
 const connection = require('./Config/db')
+
 app.use(express.json())
 app.use(cors({
     origin: "*"

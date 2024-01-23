@@ -1,5 +1,5 @@
 const cloudUrl =
-    "mongodb+srv://ranik10245:10245@cluster0.amponrd.mongodb.net/PrepbyteClone?retryWrites=true&w=majority";
+    "mongodb+srv://ranik10245:ranik10245@cluster0.amponrd.mongodb.net/PREPBYTES-CLONE?retryWrites=true&w=majority";
 const mongoose = require("mongoose");
 
 const connection = async () => {
