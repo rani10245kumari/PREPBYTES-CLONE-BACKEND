@@ -41,4 +41,8 @@ const mockdfind = async (req, res) => {
         res.send("inncorect response", err.message)
     }
 }
+
+/*------------Registeration-Page--------------------*/
+
+
 module.exports = { alldata, alldatafind, mockd, mockdfind };

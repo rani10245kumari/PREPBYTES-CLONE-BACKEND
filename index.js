@@ -3,10 +3,11 @@ const app = express();
 const routes = require('./router')
 const mockdata = require('./dataModel/data')
 const cors = require('cors')
-const videoData = require('./dataModel/videodata')
-const { videoTutorial, datavideo } = require('./dataModel/MODEL/Schema')
+const videoData = require('./dataModel/videodata');
 const connection = require('./Config/db')
 const SyllabusData = require('./dataModel/syllabusData')
+
+
 app.use(express.json())
 app.use(cors({
     origin: "*"
