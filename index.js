@@ -6,7 +6,7 @@ const cors = require('cors')
 const videoData = require('./dataModel/videodata')
 const { videoTutorial, datavideo } = require('./dataModel/MODEL/Schema')
 const connection = require('./Config/db')
-
+const SyllabusData = require('./dataModel/syllabusData')
 app.use(express.json())
 app.use(cors({
     origin: "*"
@@ -17,6 +17,9 @@ app.get("/", (req, res) => {
 })
 app.get("/video", (req, res) => {
     res.send(videoData)
+})
+app.get("/syllabusdata", (req, res) => {
+    res.send(SyllabusData)
 })
 
 app.use('/pages', routes)
