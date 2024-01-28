@@ -23,6 +23,7 @@ app.get("/syllabusdata", (req, res) => {
     res.send(SyllabusData)
 })
 
+app.use('/user', routes)
 app.use('/pages', routes)
 
 
