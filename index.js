@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const routes = require('./router')
+const routing = require('./route')
 const mockdata = require('./dataModel/data')
 const cors = require('cors')
 const videoData = require('./dataModel/videodata');
@@ -23,7 +24,7 @@ app.get("/syllabusdata", (req, res) => {
     res.send(SyllabusData)
 })
 
-app.use('/user', routes)
+app.use('/user', routing);
 app.use('/pages', routes)
 
 
