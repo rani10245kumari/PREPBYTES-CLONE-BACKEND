@@ -1,10 +1,10 @@
-const bcrypt = require("bcrypt");
-const dotENV = require("dotenv");
+
+
 const JWT = require("jsonwebtoken");
-dotENV.config();
+
 const KEY = "privatekeys";
 const registredUserCollection = require("../dataModel/MODEL/SignupSchema");
-const saltRound = 10;
+
 
 const userLogin = async (request, response) => {
     const tempUser = request.body;
@@ -13,15 +13,7 @@ const userLogin = async (request, response) => {
     if (findUser.length === 0) {
         return response.send({ resMsg: "Sorry, You are not registered with us. Please register." });
     }
-    const userAuthenticaticated = bcrypt.compareSync(tempUser.userPassword, findUser[0].userPassword);
 
-    if (userAuthenticaticated) {
-        const generatedToken = JWT.sign({ "USER": tempUser.userEmail }, KEY, { expiresIn: "9000" });
-        return response.send({ "Your_TOKEN": generatedToken, "UserDetails": findUser });
-
-    } else {
-        return response.send({ resMsg: "Incorrect Credentials. Please try again" });
-    }
 }
 
 const userRegister = async (request, response) => {
@@ -33,7 +25,7 @@ const userRegister = async (request, response) => {
     } else {
 
         //hashing password using bcrypt
-        tempUser.userPassword = bcrypt.hashSync(tempUser.userPassword, saltRound);
+
 
         // saving new user in database
         const registredResult = await registredUserCollection.create(tempUser);
