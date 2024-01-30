@@ -13,6 +13,9 @@ const userLogin = async (request, response) => {
     if (findUser.length === 0) {
         return response.send({ resMsg: "Sorry, You are not registered with us. Please register." });
     }
+    if (tempUser.userpassword === findUser.userpassword) {
+        return response.send({ resMsg: "User Login successfully" })
+    }
 
 }
 
