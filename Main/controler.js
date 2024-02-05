@@ -36,6 +36,7 @@ const userRegister = async (request, response) => {
         if (registredResult) {
             // generating JWT token for every new user who try to registred with our website
             const generatedToken = JWT.sign({ "USER": tempUser.userEmail }, KEY);
+            console.log(generatedToken);
 
             // sending response back to client 
             return response.send({ resMsg: "Registred Successfully.", "Your_TOKEN": generatedToken, "userDetails": registredResult });
