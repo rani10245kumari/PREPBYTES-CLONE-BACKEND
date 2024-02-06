@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { alldata, alldatafind, mockd, mockdfind } = require('./Main/func');
+const { alldata, alldatafind, mockd, mockdfind, Addtocart, getCartdata } = require('./Main/func');
 
 
 router.get('/', (req, res) => {
@@ -14,6 +14,7 @@ router.post('/videodata', alldata)
 router.get('/videodatafind', alldatafind);
 router.post('/mockdatas', mockd);
 router.get('/mockdatasfind', mockdfind);
-
+router.post('/addtocart', Addtocart)
+router.get('/getcartdata', getCartdata);
 
 module.exports = router;

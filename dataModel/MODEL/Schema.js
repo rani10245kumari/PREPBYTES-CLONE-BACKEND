@@ -12,9 +12,23 @@ const dataSchema = new mongoose.Schema({
     testCategory: String,
     testPrice: String,
 });
+
+const mockdataSchema = new mongoose.Schema({
+    testID: Number,
+    testImg: String,
+    testTitle: String,
+    testCategory: String,
+    testPrice: String,
+
+});
+
+const cart = mongoose.model("cartdata", mockdataSchema)
+
+
 const videoTutorial = mongoose.model("data", videoSchema);
 const datavideo = mongoose.model("data2", dataSchema);
 
+
 module.exports = {
-    videoTutorial, datavideo
+    videoTutorial, datavideo, cart
 };

@@ -1,6 +1,6 @@
 const mockData = require('../dataModel/data')
 const videodata = require('../dataModel/videodata')
-const { videoTutorial, datavideo } = require('../dataModel/MODEL/Schema')
+const { videoTutorial, datavideo, cart } = require('../dataModel/MODEL/Schema')
 
 //--------------videodata-page---------
 const alldata = async (req, res) => {
@@ -42,7 +42,30 @@ const mockdfind = async (req, res) => {
     }
 }
 
-/*------------Registeration-Page--------------------*/
+/*------------Mockdata-Page-BuyNow--------------------*/
+const Addtocart = async (req, res) => {
+    try {
+        const BuyNow = req.body
+        const cartfind = await cart.create(BuyNow);
+        res.send(cartfind)
+        console.log(cartfind);
+    }
+    catch (err) {
+        console.log("error");
+    }
+}
+
+const getCartdata = async (req, res) => {
+    try {
+        const cartfind = await cart.find({});
+        res.send(cartfind)
+        console.log(cartfind);
+    }
+    catch (err) {
+        console.log("error");
+    }
+}
 
 
-module.exports = { alldata, alldatafind, mockd, mockdfind };
+
+module.exports = { alldata, alldatafind, mockd, mockdfind, Addtocart, getCartdata };

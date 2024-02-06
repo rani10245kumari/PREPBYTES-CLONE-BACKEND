@@ -9,7 +9,7 @@ const connection = require('./Config/db')
 const SyllabusData = require('./dataModel/syllabusData')
 
 
-app.use(express.json())
+// app.use(express.json())
 app.use(cors({
     origin: "*"
 }))
@@ -24,6 +24,9 @@ app.get("/syllabusdata", (req, res) => {
     res.send(SyllabusData)
 })
 
+app.post("/purchasedCourse", (req, res) => {
+    console.log(res.body)
+})
 app.use('/user', routing);
 app.use('/pages', routes)
 
