@@ -43,15 +43,40 @@ const mockdfind = async (req, res) => {
 }
 
 /*------------Mockdata-Page-BuyNow--------------------*/
+// const Addtocart = async (req, res) => {
+//     const BuyNow = req.body
+//     const duplicate = await cart.findOne({ testID: BuyNow.testID })
+//     console.log(duplicate)
+//     try {
+
+//         const cartfind = await cart.create(BuyNow);
+//         res.send(cartfind)
+//         // console.log(cartfind);
+//     }
+//     catch (err) {
+//         console.log("error");
+//     }
+// }
+
 const Addtocart = async (req, res) => {
+
     try {
-        const BuyNow = req.body
-        const cartfind = await cart.create(BuyNow);
-        res.send(cartfind)
-        console.log(cartfind);
-    }
-    catch (err) {
-        console.log("error");
+        console.log("heloooo")
+        const BuyNow = req.body;
+        const duplicate = await cart.findOne({ testID: BuyNow.testID });
+        console.log(duplicate);
+
+        if (duplicate) {
+            console.log('Duplicate found:', duplicate);
+            // Handle duplicate entry here if needed
+            res.send({ msg: "Item is already in the cart" })
+        } else {
+            const cartfind = await cart.create(BuyNow);
+            res.send({ msg: "Item is added " })
+        }
+    } catch (err) {
+        console.log("Error:", err);
+        res.status(500).send('Internal Server Error');
     }
 }
 
@@ -59,7 +84,7 @@ const getCartdata = async (req, res) => {
     try {
         const cartfind = await cart.find({});
         res.send(cartfind)
-        console.log(cartfind);
+        // console.log(cartfind);
     }
     catch (err) {
         console.log("error");
@@ -68,7 +93,8 @@ const getCartdata = async (req, res) => {
 
 const getdeleteCart = async (req, res) => {
     const data = req.body;
-    const remove = await cart.findOneAndDelete({ id: data.testID });
+    console.log(data);
+    const remove = await cart.findOneAndDelete({ testID: data.testID });
     console.log("item removed", remove);
     res.send("item data removed");
 };

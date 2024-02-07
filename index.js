@@ -9,7 +9,7 @@ const connection = require('./Config/db')
 const SyllabusData = require('./dataModel/syllabusData')
 
 
-// app.use(express.json())
+app.use(express.json())
 app.use(cors({
     origin: "*"
 }))

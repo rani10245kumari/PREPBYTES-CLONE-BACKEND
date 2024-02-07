@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { alldata, alldatafind, mockd, mockdfind, Addtocart, getCartdata,
-    getdeleteCart } = require('./Main/func');
+const { alldata, alldatafind, mockd, mockdfind, Addtocart, getCartdata, getdeleteCart } = require('./Main/func');
 
 
 router.get('/', (req, res) => {
