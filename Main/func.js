@@ -66,6 +66,13 @@ const getCartdata = async (req, res) => {
     }
 }
 
+const getdeleteCart = async (req, res) => {
+    const data = req.body;
+    const remove = await cart.findOneAndDelete({ id: data.testID });
+    console.log("item removed", remove);
+    res.send("item data removed");
+};
 
 
-module.exports = { alldata, alldatafind, mockd, mockdfind, Addtocart, getCartdata };
+
+module.exports = { alldata, alldatafind, mockd, mockdfind, Addtocart, getCartdata, getdeleteCart };
