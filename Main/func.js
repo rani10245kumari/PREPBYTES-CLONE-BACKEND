@@ -43,20 +43,7 @@ const mockdfind = async (req, res) => {
 }
 
 /*------------Mockdata-Page-BuyNow--------------------*/
-// const Addtocart = async (req, res) => {
-//     const BuyNow = req.body
-//     const duplicate = await cart.findOne({ testID: BuyNow.testID })
-//     console.log(duplicate)
-//     try {
 
-//         const cartfind = await cart.create(BuyNow);
-//         res.send(cartfind)
-//         // console.log(cartfind);
-//     }
-//     catch (err) {
-//         console.log("error");
-//     }
-// }
 
 const Addtocart = async (req, res) => {
 
