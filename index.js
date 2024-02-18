@@ -10,9 +10,18 @@ const SyllabusData = require('./dataModel/syllabusData')
 
 
 app.use(express.json())
-app.use(cors({
-    origin: "*"
-}))
+// app.use(cors({
+//     origin: "*"
+// }))
+
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
+
+
 const stripe = require("stripe")(
     "sk_test_51OFIomSI0xtOp9M48W366HBE5QDo7oR2HKZyLVW2Dg9YNvJ95E2aIVJbHen4bLdsrwsraF190ouIGyLXRta4GpFs00GW4XRqmb"
 );
