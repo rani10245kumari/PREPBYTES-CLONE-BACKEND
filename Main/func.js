@@ -1,6 +1,8 @@
 const mockData = require('../dataModel/data')
 const videodata = require('../dataModel/videodata')
 const { videoTutorial, datavideo, dashboardmockSchema1 } = require('../dataModel/MODEL/Schema')
+const { mentorCollection } = require('../dataModel/MODEL/MentorSchema')
+
 
 //--------------videodata-page---------
 const alldata = async (req, res) => {
@@ -42,6 +44,26 @@ const mockdfind = async (req, res) => {
     }
 }
 
+//==============mentors data==============
+const mentordata = async (req, res) => {
+    try {
+        const Mentors = await mentorCollection.create(mentorData)
+        res.send(Mentors);
+    }
+    catch (err) {
+        res.send("inncorect response", err.message)
+    }
+}
+const mentordatafind = async (req, res) => {
+    try {
+        const Mentorsfind = await mentorCollection.find({})
+        res.send(Mentorsfind);
+    }
+    catch (err) {
+        res.send("inncorect response", err.message)
+    }
+}
+
 /*------------Mockdata-Page-DASHBOARD--------------------*/
 datapushtodasboard = async (req, res) => {
     const data = req.body;
@@ -55,4 +77,7 @@ getdashpboardmock = async (req, res) => {
 };
 
 
-module.exports = { alldata, alldatafind, mockd, mockdfind, getdashpboardmock, datapushtodasboard };
+
+
+
+module.exports = { alldata, alldatafind, mockd, mockdfind, getdashpboardmock, datapushtodasboard, mentordata, mentordatafind };

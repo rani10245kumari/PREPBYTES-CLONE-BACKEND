@@ -7,7 +7,7 @@ const cors = require('cors')
 const videoData = require('./dataModel/videodata');
 const connection = require('./Config/db')
 const SyllabusData = require('./dataModel/syllabusData')
-const mentorCollection = require("./dataModel/mentordata")
+const MentorData = require('./dataModel/mentordata')
 
 app.use(express.json())
 app.use(cors({
@@ -58,9 +58,8 @@ app.get("/syllabusdata", (req, res) => {
 app.post("/purchasedCourse", (req, res) => {
     console.log(res.body)
 })
-app.get("/mentors", async (request, response) => {
-    const mentors = await mentorCollection.find({});
-    return response.send(mentors)
+app.get("/mentors", (request, response) => {
+    response.send(MentorData)
 })
 
 app.use('/user', routing);
