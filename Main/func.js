@@ -1,6 +1,6 @@
 const mockData = require('../dataModel/data')
 const videodata = require('../dataModel/videodata')
-const { videoTutorial, datavideo, cart } = require('../dataModel/MODEL/Schema')
+const { videoTutorial, datavideo, dashboardmockSchema1 } = require('../dataModel/MODEL/Schema')
 
 //--------------videodata-page---------
 const alldata = async (req, res) => {
@@ -42,50 +42,22 @@ const mockdfind = async (req, res) => {
     }
 }
 
-/*------------Mockdata-Page-BuyNow--------------------*/
+/*------------Mockdata-Page-DASHBOARD--------------------*/
 
 
-const Addtocart = async (req, res) => {
 
-    try {
-        console.log("heloooo")
-        const BuyNow = req.body;
-        const duplicate = await cart.findOne({ testID: BuyNow.testID });
-        console.log(duplicate);
 
-        if (duplicate) {
-            console.log('Duplicate found:', duplicate);
-            // Handle duplicate entry here if needed
-            res.send({ msg: "Item is already in the cart" })
-        } else {
-            const cartfind = await cart.create(BuyNow);
-            res.send({ msg: "Item is added " })
-        }
-    } catch (err) {
-        console.log("Error:", err);
-        res.status(500).send('Internal Server Error');
-    }
-}
 
-const getCartdata = async (req, res) => {
-    try {
-        const cartfind = await cart.find({});
-        res.send(cartfind)
-        // console.log(cartfind);
-    }
-    catch (err) {
-        console.log("error");
-    }
-}
-
-const getdeleteCart = async (req, res) => {
+datapushtodasboard = async (req, res) => {
     const data = req.body;
-    console.log(data);
-    const remove = await cart.findOneAndDelete({ testID: data.testID });
-    console.log("item removed", remove);
-    res.send("item data removed");
+    const learning = await dashboardmockSchema1.create(data);
+    res.send(learning);
+};
+
+getdashpboardmock = async (req, res) => {
+    const data = await dashboardmockSchema1.find({});
+    res.send(data);
 };
 
 
-
-module.exports = { alldata, alldatafind, mockd, mockdfind, Addtocart, getCartdata, getdeleteCart };
+module.exports = { alldata, alldatafind, mockd, mockdfind, getdashpboardmock, datapushtodasboard };
