@@ -7,18 +7,13 @@ const cors = require('cors')
 const videoData = require('./dataModel/videodata');
 const connection = require('./Config/db')
 const SyllabusData = require('./dataModel/syllabusData')
-
+const mentorCollection = require("./dataModel/mentordata")
 
 app.use(express.json())
-// app.use(cors({
-//     origin: "*"
-// }))
+app.use(cors({
+    origin: "*"
+}))
 
-app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
 
 
 
@@ -63,6 +58,11 @@ app.get("/syllabusdata", (req, res) => {
 app.post("/purchasedCourse", (req, res) => {
     console.log(res.body)
 })
+app.get("/mentors", async (request, response) => {
+    const mentors = await mentorCollection.find({});
+    return response.send(mentors)
+})
+
 app.use('/user', routing);
 app.use('/pages', routes)
 

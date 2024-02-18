@@ -43,11 +43,6 @@ const mockdfind = async (req, res) => {
 }
 
 /*------------Mockdata-Page-DASHBOARD--------------------*/
-
-
-
-
-
 datapushtodasboard = async (req, res) => {
     const data = req.body;
     const learning = await dashboardmockSchema1.create(data);
