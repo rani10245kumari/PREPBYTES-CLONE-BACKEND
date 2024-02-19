@@ -78,6 +78,4 @@ getdashpboardmock = async (req, res) => {
 
 
 
-
-
 module.exports = { alldata, alldatafind, mockd, mockdfind, getdashpboardmock, datapushtodasboard, mentordata, mentordatafind };
